@@ -11,4 +11,4 @@ jobs:
         runs-on: ubuntu-latest
     steps:
         - id: test1
-          run: echo "This is a test step in job"
+          run: echo This is a test step in job
