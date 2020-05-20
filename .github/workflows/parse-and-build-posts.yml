@@ -1,14 +1,12 @@
 name: Parse and build posts
 on:
     push:
-        branches:
-            - master
-        paths:
-            - 'posts/**'
+        branches: [ master ]
 jobs:
     parse-posts:
         name: Parse posts
         runs-on: ubuntu-latest
-    steps:
-        - id: test1
-          run: echo This is a test step in job
+        steps:
+        # Runs a single command using the runners shell
+        - name: Run a one-line script
+          run: echo Hello, world!
