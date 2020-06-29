@@ -25,7 +25,6 @@ jobs:
             yarn build-export
         - name: Upload statics to S3
           run: pwd
-        - 
         # - name: Get diff
         #   run: git diff --name-status --output diff.txt ${{ github.event.before }} ${{ github.sha }}
         # - name: Read diff
