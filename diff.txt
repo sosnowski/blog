@@ -1,0 +1,3 @@
+D	.github/workflows/blank.yml
+M	.github/workflows/parse-and-build-posts
+A	blog/__posts/optimizing-aws-lambda/optimizing-aws-lambda.md

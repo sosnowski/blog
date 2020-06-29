@@ -19,11 +19,18 @@ jobs:
         # Runs a single command using the runners shell
         - name: Run a one-line script
           run: echo Hello, world!
-        - name: Get diff
-          run: git diff --name-status --output diff.txt ${{ github.event.before }} ${{ github.sha }}
-        - name: Read diff
+        - name: Build and export
           run: |
-            echo Reading diff file...
-            cat diff.txt
-        - name: Run script
-          run: npx ts-node -s ./.github/actions/read-diff.ts
+            cd ./blog
+            yarn build-export
+        - name: Upload statics to S3
+          run: pwd
+        - 
+        # - name: Get diff
+        #   run: git diff --name-status --output diff.txt ${{ github.event.before }} ${{ github.sha }}
+        # - name: Read diff
+        #   run: |
+        #     echo Reading diff file...
+        #     cat diff.txt
+        # - name: Run script
+        #   run: npx ts-node -s ./.github/actions/read-diff.ts
