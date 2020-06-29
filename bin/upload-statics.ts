@@ -38,8 +38,8 @@ const getS3Assets = async (): Promise<string[]> => {
 const s3 = new S3Client({
     region: 'us-east-1',
     credentials: {
-        secretAccessKey: 'nope',
-        accessKeyId: 'nope'
+        secretAccessKey: process.env.AWS_S3_ACCESS_KEY,
+        accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID
     }
 });
 

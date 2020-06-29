@@ -4,7 +4,7 @@ on:
         branches: [ master ]
 jobs:
     parse-posts:
-        name: Parse posts
+        name: Build and deploy
         runs-on: ubuntu-latest
         steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -23,8 +23,12 @@ jobs:
           run: |
             cd ./blog
             yarn build-export
+            cd ..
         - name: Upload statics to S3
-          run: pwd
+          env:
+            AWS_S3_ACCESS_KEY: ${{ secrets.AWS_S3_ACCESS_KEY }}
+            AWS_S3_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY_ID }}
+          run: ts-node -s ./bin/upload-statics.ts
         # - name: Get diff
         #   run: git diff --name-status --output diff.txt ${{ github.event.before }} ${{ github.sha }}
         # - name: Read diff
