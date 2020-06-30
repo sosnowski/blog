@@ -8,15 +8,20 @@ export const Abstract = styled.section`
     font-weight: bold;
 `;
 
-
-
-export const Meta = styled.section`
-    display: flex;
-    flex-direction: row;
+export const Meta = styled('section')`
+    display: block;
+    text-align: left;
     color: #0b7261;
     font-weight: bold;
     font-size: 1.1rem;
     margin: 0 0 2rem 0;
+`;
+
+export const DateInfo = styled('span')`
+    display: block;
+    font-size: 0.9rem;
+    padding: 0.3rem;
+    color: #000;
 `;
 
 export const Tag = styled.span`
@@ -28,10 +33,6 @@ export const Tag = styled.span`
     & > strong {
         margin-right: 3px;
     }
-`;
-
-export const DateInfo = styled.span`
-    flex: 1;
 `;
 
 interface Props {

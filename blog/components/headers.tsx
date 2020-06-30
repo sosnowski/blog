@@ -30,7 +30,7 @@ const PrimaryHeaderContainer = styled('h1')<HeaderProps>`
         left: 5px;
         background-color: ${props => props.barColor || '#ffc832'};
         z-index: 10;
-        width: 120%;
+        width: 100%;
     }
 
     & > span {

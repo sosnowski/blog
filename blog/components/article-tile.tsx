@@ -36,16 +36,19 @@ const Tag = styled.span`
     }
 `;
 
-const Footer = styled('section')<StyleProps>`
-    display: flex;
-    flex-direction: row;
+const Tags = styled('section')<StyleProps>`
+    display: block;
+    text-align: left;
     color: ${props => props.main ? '#0b7261' : '#2e2459'};
     font-weight: bold;
     font-size: 0.9rem;
 `;
 
-const DateInfo = styled.span`
-    flex: 1;
+const DateInfo = styled('span')<StyleProps>`
+    display: block;
+    font-size: 0.9rem;
+    padding: 0.3rem;
+    color: ${props => props.main ? '#000' : '#fff'};
 `;
 
 interface Props {
@@ -61,14 +64,14 @@ export const ArticleTile: StyledFunctionComponent<Props> = ({ post, className, m
                 <Link href="/post/[id]" as={`/post/${post.id}`}><a>{post.title}</a></Link>
             </DefaultHeader>
             <Abstract main={main}><Link href="/post/[id]" as={`/post/${post.id}`}><a>{post.abstract}</a></Link></Abstract>
-            <Footer main={main}>
-                <DateInfo>{created.toLocaleString(DateTime.DATE_FULL)}</DateInfo>
+            <Tags main={main}>
                 {
                     post.tags.map(tag => {
                         return (<Tag key={tag}><strong>#</strong>{tag}</Tag>)
                     })
                 }
-            </Footer>
+            </Tags>
+            <DateInfo main={main}>{created.toLocaleString(DateTime.DATE_FULL)}</DateInfo>
         </Container>
     );
 };
