@@ -30,12 +30,12 @@ export default ({ post }: Props) => {
             <article>
                 <PrimaryHeader>{post.title}</PrimaryHeader>
                 <Meta>
-                    <DateInfo>{created.toLocaleString(DateTime.DATE_FULL)}</DateInfo>
                     {
                         post.tags.map(tag => {
                             return (<Tag key={tag}><strong>#</strong>{tag}</Tag>)
                         })
                     }
+                <DateInfo>{created.toLocaleString(DateTime.DATE_FULL)}</DateInfo>
                 </Meta>
                 <Abstract>{post.abstract}</Abstract>
                 <Content content={post.content}></Content>

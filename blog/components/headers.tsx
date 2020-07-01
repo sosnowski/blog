@@ -57,9 +57,16 @@ export const PrimaryHeader: StyledFunctionComponent<HeaderProps> = (props) => {
 
 export const GreenSectionHeader: StyledFunctionComponent = ({ children, className }) => {
     return (
-        <PrimaryHeaderContainer bar barColor="#2e2459" color="#fff" size="2.2rem" margin="1rem 0"><span>{children}</span></PrimaryHeaderContainer>
+        <PrimaryHeaderContainer bar barColor="#2e2459" color="#fff" size="2.2rem" margin="1rem 0" className={className}><span>{children}</span></PrimaryHeaderContainer>
     )
 };
+
+export const FooterSectionHeader: StyledFunctionComponent = ({ children, className }) => {
+    return (
+        <PrimaryHeaderContainer bar barColor="#a72145" color="#fff" size="2.2rem" margin="1rem 0" className={className}><span>{children}</span></PrimaryHeaderContainer>
+    )
+};
+
 
 export const DefaultHeader: FunctionComponent<HeaderProps> = (props) => {
     return (
