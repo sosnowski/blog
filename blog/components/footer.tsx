@@ -17,6 +17,17 @@ const Content = styled(ContentWrapper)`
         "header header"
         "avatar text"
         "social social";
+    grid-gap: 1rem;
+
+    @media (max-width: 750px) {
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+            "header"
+            "avatar"
+            "text"
+            "social";
+    }
     justify-items: start;
     align-items: start;
 `;
@@ -28,6 +39,7 @@ const Header = styled(FooterSectionHeader)`
 
 const Avatar = styled.img`
     grid-area: avatar;
+    justify-self: center;
     width: 150px;
     height: 150px;
     border-radius: 75px;
@@ -38,7 +50,9 @@ const Text = styled.p`
     grid-area: text;
     color: #fff;
     align-self: center;
-    margin: 0 2rem;
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.7rem;
 `;
 
 const Links = styled.p`
@@ -46,7 +60,7 @@ const Links = styled.p`
     justify-self: stretch;
     color: #fff;
     text-align: right;
-    margin: 0 2rem;
+    margin: 0;
 
     & img {
         width: 2rem;
@@ -65,9 +79,9 @@ export const Footer: StyledFunctionComponent = ({ className, children }) => {
             <Content>
                 <Header>Hi! I'm Damian</Header>
                 <Avatar src="assets/face.jpg" />
-                <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec libero ut metus facilisis euismod sit amet a elit.
-                    Maecenas ullamcorper maximus vehicula. Aenean dictum nisl quis commodo consequat.
-                    Nam mattis commodo est, ac ultrices est mattis nec. Aenean id turpis nibh.</Text>
+                <Text><strong>Welcome to my blog!</strong><br />I'm an Engineering Manager in OLX, certified AWS Architect Associate and a technology geek.
+                    While  mostly working with JavaScript I try to avoid being locked down in a single-technology box as I believe that most interesting things happen at the junction of different words.
+                </Text>
                 <Links>
                     <a href="http://github.com/sosnowski" target="_blank"><img src="/assets/github.png" alt="My Github"/></a>
                     <a href="https://twitter.com/sosnowsd" target="_blank"><img src="/assets/twitter.svg" alt="My Twitter"/></a>
