@@ -24,6 +24,10 @@ export default function Home({ articles }: HomeProps) {
     <Fragment>
         <Head>
             <title>Blog - Sosnowski.dev</title>
+            <meta name="description" content="Hi! I'm Damian. I'm an Engineering Manager in OLX, certified AWS Architect Associate and a technology geek. Welcome to my blog!" />
+            <meta property="og:title" content="Blog - Sosnowski.dev" />
+            <meta property="og:description" content="Hi! I'm Damian. I'm an Engineering Manager in OLX, certified AWS Architect Associate and a technology geek. Welcome to my blog!" />
+            <meta property="og:url" content="https://sosnowski.dev" />
         </Head>
         <ContentWrapper>
             <Breadcrumb steps={[

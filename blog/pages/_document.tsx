@@ -8,6 +8,7 @@ class MyDocument extends Document {
         <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+            <meta property="og:site_name" content="Sosnowski.dev - Personal Blog"></meta>
         </Head>
         <Global styles={css`
             @font-face {

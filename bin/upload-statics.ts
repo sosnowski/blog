@@ -8,6 +8,9 @@ import { ListObjectsCommand, ListObjectsInput } from '@aws-sdk/client-s3-node/co
 const bucketName = 'sosnowski-blog-files';
 const staticFolder = join(__dirname, '..', 'blog', 'out');
 
+const CACHE_DEFAULT = 60 * 60 * 24;
+const CACHE_ASSETS = 60 * 60 * 24 * 3;
+
 const getAllFiles = (path: string): string[] => {
     return readdirSync(path, {
         withFileTypes: true,
@@ -48,25 +51,24 @@ const s3 = new S3Client({
     const allStaticFiles = getAllFiles(staticFolder);
     console.log('Loading existing assets from S3...');
     const existingAssets = await getS3Assets();
-    //load list of assets from s3 (only assets), don't upload assets that are already uploaded
-    
-    // await Promise.all(
+
     for(let i = 0; i < allStaticFiles.length; i++) {
         const file = allStaticFiles[i];
         const imageKey = relative(staticFolder, file);
+        const isAsset = imageKey.substr(0, 6) === 'assets';
         if (!existingAssets.includes(imageKey)) {
             console.log(`Uploading file ${file} to ${imageKey}...`);
             await s3.send(new PutObjectCommand({
                 Bucket: bucketName,
                 Key: imageKey,
                 Body: readFileSync(file),
-                ContentType: lookup(file) || 'plain/text'
+                ContentType: lookup(file) || 'plain/text',
+                CacheControl: `max-age=${isAsset ? CACHE_ASSETS : CACHE_DEFAULT}`
             }));
             console.log('Done');
         } else {
             console.log(`${imageKey} already uploaded`);
         }
     }
-    // );
     console.log('All done');
 })();

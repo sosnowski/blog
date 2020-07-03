@@ -21,6 +21,9 @@ export default ({ post }: Props) => {
             <Head>
                 <title>{post.title} - Sosnowski.dev</title>
                 <meta name="description" content={post.abstract} />
+                <meta property="og:title" content={`${post.title} - Sosnowski.dev`} />
+                <meta property="og:description" content={post.abstract} />
+                <meta property="og:url" content={`https://sosnowski.dev/post/${post.id}`} />
             </Head>
             <Breadcrumb steps={[
                 { label: 'Home' },

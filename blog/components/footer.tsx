@@ -6,7 +6,7 @@ import { FooterSectionHeader } from './headers';
 const FooterContainer = styled.footer`
     background-color: #2a3439;
     margin: 0;
-    padding: 2rem;
+    padding: 2rem 0;
 `;
 
 const Content = styled(ContentWrapper)`
