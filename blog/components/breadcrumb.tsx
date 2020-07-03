@@ -6,7 +6,8 @@ import Link from "next/link";
 interface Props {
     steps: {
         label: string;
-        url?: string;
+        href?: string;
+        as?: string;
     }[]
 }
 
@@ -38,12 +39,12 @@ const BreadcrumbContainer = styled.section`
     }
 `;
 
-export const Breadcrumb: StyledFunctionComponent<Props> = ({ steps, className, children }) => {
+export const Breadcrumb: StyledFunctionComponent<Props> = ({ steps }: Props) => {
     return (
         <BreadcrumbContainer>
             {
                 steps.map(step => {
-                    return step.url ? (<Link key={step.label} href={step.url}><a>{step.label}</a></Link>) : <span key={step.label}>{step.label}</span>
+                    return step.href ? (<Link key={step.label} href={step.href} as={step.as}><a>{step.label}</a></Link>) : <span key={step.label}>{step.label}</span>
                 })
             }
         </BreadcrumbContainer>

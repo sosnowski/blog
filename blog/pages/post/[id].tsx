@@ -27,8 +27,8 @@ export default ({ post }: Props) => {
             </Head>
             <Breadcrumb steps={[
                 { label: 'Home' },
-                { label: 'Blog', url: '/' },
-                { label: post.title, url: `/post/${post.id}` }
+                { label: 'Blog', href: '/', as: '/' },
+                { label: post.title, href: `/post/[id]`, as: `/post/${post.id}` }
             ]}/>
             <article>
                 <PrimaryHeader>{post.title}</PrimaryHeader>

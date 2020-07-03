@@ -32,7 +32,7 @@ export default function Home({ articles }: HomeProps) {
         <ContentWrapper>
             <Breadcrumb steps={[
                 { label: 'Home' },
-                { label: 'Blog', url: '/' }
+                { label: 'Blog', href: '/', as: '/' }
             ]}/>
             <ArticleTile main post={articles[0]}/>
         </ContentWrapper>
