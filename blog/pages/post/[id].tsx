@@ -65,7 +65,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         paths: (await getPostsMetdata()).map(meta => {
             return {
                 params: {
-                    id: `${meta.id}`,
+                    id: meta.id,
                 }
             };
         }),

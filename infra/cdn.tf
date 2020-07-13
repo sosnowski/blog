@@ -81,19 +81,11 @@ resource "aws_cloudfront_distribution" "blog_assets_distribution" {
   default_root_object = "index.html"
   price_class         = "PriceClass_100"
 
-  aliases = ["cdn.sosnowski.dev"]
-
-  viewer_certificate {
-    acm_certificate_arn = "arn:aws:acm:us-east-1:273063963518:certificate/4631844b-767f-4f65-b2bf-d18a16d20bae"
-    ssl_support_method  = "sni-only"
-  }
-
   restrictions {
     geo_restriction {
       restriction_type = "none"
     }
   }
-
 
   logging_config {
     include_cookies = false
@@ -101,6 +93,14 @@ resource "aws_cloudfront_distribution" "blog_assets_distribution" {
     prefix          = "cloudfront_logs/"
   }
 
+  aliases = ["cdn.sosnowski.dev", "sosnowski.dev"]
+
+  viewer_certificate {
+    acm_certificate_arn = "arn:aws:acm:us-east-1:273063963518:certificate/4631844b-767f-4f65-b2bf-d18a16d20bae"
+    ssl_support_method  = "sni-only"
+  }
+
+  
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
@@ -122,7 +122,7 @@ resource "aws_cloudfront_distribution" "blog_assets_distribution" {
     }
 
     # 12h
-    default_ttl = 0
+    default_ttl = 43200
   }
 
   ordered_cache_behavior {
@@ -139,8 +139,8 @@ resource "aws_cloudfront_distribution" "blog_assets_distribution" {
     }
     viewer_protocol_policy = "redirect-to-https"
 
-    # 24h 86400
-    default_ttl = 0
+    # 24h * 3
+    default_ttl = 259200
   }
 
   tags = {
@@ -156,8 +156,6 @@ data "archive_file" "cdn-origin-request-zip" {
   source_file = "dist/cdn-origin-request/handler.js"
   output_path = "dist/cdn-origin-request.zip"
 }
-
-# brakuje roli jeszcze https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-permissions.html
 
 resource "aws_cloudwatch_log_group" "example" {
   provider          = aws.aws-us-east-1

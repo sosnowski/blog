@@ -19,7 +19,7 @@ const Green = styled.section`
     padding: 2rem 0;
 `;
 
-export default function Home({ articles }: HomeProps) {
+export default ({ articles }: HomeProps) => {
   return (
     <Fragment>
         <Head>
@@ -48,11 +48,11 @@ export default function Home({ articles }: HomeProps) {
             </ContentWrapper>
         </Green>
     </Fragment>
-  )
+  );
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-    const data = await getPostsMetdata()
+    const data = await getPostsMetdata();
     data.sort((a, b) => {
         return (DateTime.fromISO(a.created).toMillis() > DateTime.fromISO(b.created).toMillis()) ? -1 : 1;
     });

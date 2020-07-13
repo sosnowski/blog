@@ -1,4 +1,4 @@
-import { readdir, Dirent, access, constants, readFile } from 'fs';
+import { readdir, Dirent, readFile } from 'fs';
 import { basename, extname } from 'path';
 import { promisify } from 'util';
 import { join } from 'path';
@@ -36,16 +36,16 @@ export interface PostData {
     content: string
 }
 
-const parseMeta = (postId: string, meta: { [key: string]: any }): PostMetadata => {
-    return {
-        title: meta.title,
-        tags: meta.tags,
-        abstract: meta.abstract,
-        created: meta.created,
-        updated: meta.updated,
-        id: postId
-    };
-}
+// const parseMeta = (postId: string, meta: { [key: string]: any }): PostMetadata => {
+//     return {
+//         title: meta.title,
+//         tags: meta.tags,
+//         abstract: meta.abstract,
+//         created: meta.created,
+//         updated: meta.updated,
+//         id: postId
+//     };
+// }
 
 export const getPostMetadata = async (postFile: string): Promise<PostMetadata> => {
     const fileContent = await readFileAsync(join(postsPath, postFile), {
@@ -55,8 +55,15 @@ export const getPostMetadata = async (postFile: string): Promise<PostMetadata> =
     const result = matter(fileContent);
     const postId = basename(postFile, extname(postFile));
 
-    return parseMeta(postId, result.data);
-}
+    return {
+        title: result.data.title,
+        tags: result.data.tags,
+        abstract: result.data.abstract,
+        created: result.data.created,
+        updated: result.data.updated,
+        id: postId
+    };
+};
 
 export const getPostsMetdata = async (): Promise<PostMetadata[]> => {
     const dirContent: Dirent[] = await readDirAsync(postsPath, {
@@ -73,7 +80,7 @@ export const getPostsMetdata = async (): Promise<PostMetadata[]> => {
                 return getPostMetadata(entry.name);
             })
     );
-}
+};
 
 interface NodeElement extends Node {
     properties: {[key: string]: unknown};
@@ -131,7 +138,14 @@ export const getAllPostData = async (postId: string): Promise<PostData> => {
         .process(postMeta.content);
 
     return {
-        meta: parseMeta(postId, postMeta.data),
+        meta: {
+            title: postMeta.data.title,
+            tags: postMeta.data.tags,
+            abstract: postMeta.data.abstract,
+            created: postMeta.data.created,
+            updated: postMeta.data.updated,
+            id: postId
+        },
         content: postHtml.toString()
     };
 }
