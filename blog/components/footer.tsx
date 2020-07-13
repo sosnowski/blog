@@ -78,7 +78,7 @@ export const Footer: StyledFunctionComponent = ({ className, children }) => {
         <FooterContainer>
             <Content>
                 <Header>Hi! I'm Damian</Header>
-                <Avatar src="assets/face.jpg" />
+                <Avatar src="/assets/face.jpg" />
                 <Text><strong>Welcome to my blog!</strong><br />I'm an Engineering Manager in OLX, certified AWS Architect Associate and a technology geek.
                     While  mostly working with JavaScript I try to avoid being locked down in a single-technology box as I believe that most interesting things happen at the junction of different words.
                 </Text>
