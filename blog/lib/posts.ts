@@ -13,10 +13,17 @@ import hljs from 'highlight.js/lib/core';
 import js from 'highlight.js/lib/languages/javascript';
 import go from 'highlight.js/lib/languages/go';
 import rust from 'highlight.js/lib/languages/rust';
+import typescript from 'highlight.js/lib/languages/typescript';
+import hljsMarkdown from 'highlight.js/lib/languages/markdown';
+import bash from 'highlight.js/lib/languages/bash';
 
 hljs.registerLanguage('javascript', js);
 hljs.registerLanguage('go', go);
 hljs.registerLanguage('rust', rust);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('tsx', typescript);
+hljs.registerLanguage('markdown', hljsMarkdown);
+hljs.registerLanguage('bash', bash);
 
 const readDirAsync = promisify(readdir);
 const readFileAsync = promisify(readFile);
