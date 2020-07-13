@@ -1,5 +1,5 @@
 {
-    "name": "pipeline",
+    "name": "bin",
     "version": "0.1.0",
     "scripts": {
         "upload-statics": "ts-node -s ./upload-statics.ts"
