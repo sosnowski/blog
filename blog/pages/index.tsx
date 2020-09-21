@@ -6,7 +6,6 @@ import styled from '@emotion/styled';
 import { GreenSectionHeader } from '../components/headers';
 import { ArticleTile } from '../components/article-tile';
 import { getPostsMetdata, PostMetadata } from '../lib/posts';
-import { Breadcrumb } from '../components/breadcrumb';
 import { ContentWrapper } from '../components/content-wrapper';
 
 interface HomeProps {
@@ -30,10 +29,6 @@ export default ({ articles }: HomeProps) => {
             <meta property="og:url" content="https://sosnowski.dev" />
         </Head>
         <ContentWrapper>
-            <Breadcrumb steps={[
-                { label: 'Home' },
-                { label: 'Blog', href: '/', as: '/' }
-            ]}/>
             <ArticleTile main post={articles[0]}/>
         </ContentWrapper>
 

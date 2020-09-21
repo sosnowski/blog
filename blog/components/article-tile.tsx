@@ -14,7 +14,7 @@ const Container = styled('article')<StyleProps>`
 `;
 
 const Abstract = styled('p')<StyleProps>`
-    font-size: ${props => props.main ? '1.3rem' : '1.rem'};
+    font-size: ${props => props.main ? '1rem' : '1.rem'};
     color: ${props => props.main ? '#000' : '#fff'};
     & a {
         text-decoration: none;
@@ -71,7 +71,7 @@ export const ArticleTile: StyledFunctionComponent<Props> = ({ post, className, m
                     })
                 }
             </Tags>
-            <DateInfo main={main}>{created.toLocaleString(DateTime.DATE_FULL)}</DateInfo>
+            <DateInfo main={main}>{created.toFormat('dd LLL yyyy')}</DateInfo>
         </Container>
     );
 };

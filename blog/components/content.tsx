@@ -3,18 +3,31 @@ import styled from '@emotion/styled';
 import * as styles from './styles';
 import { StyledFunctionComponent } from './helpers';
 
+export const Article = styled.article`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    align-content: stretch;
+    margin: 0 auto;
+    padding: 0 ${styles.contentPadding};
+    max-width: ${styles.maxContentWidth};
+`;
+
 export const Abstract = styled.section`
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
+    margin: 0;
+    padding: ${styles.contentPadding};
 `;
 
 export const Meta = styled('section')`
     display: block;
     text-align: left;
     color: #0b7261;
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin: 0 0 2rem 0;
+    font-weight: normal;
+    font-size: 1rem;
+    margin: 0;
 `;
 
 export const DateInfo = styled('span')`
@@ -40,10 +53,11 @@ interface Props {
 }
 
 const ContentContainer = styled.section`
-    max-width: ${styles.maxContentWidth};
     padding: ${styles.contentPadding};
-    font-size: 1.3rem;
-    margin: 1rem auto;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    font-weight: light;
+    margin: 0;
 
     & a {
         color: ${styles.activeTextColor};
@@ -52,21 +66,34 @@ const ContentContainer = styled.section`
 
     & h2 {
         font-size: 2.1rem;
-        border-bottom: 8px solid ${styles.secondaryBgColor};
         padding: 0.5rem 0;
         width: 90%;
         margin: 2.5rem 0 2rem 0;
+        line-height: 2rem;
+
+        &::before {
+            content: "##";
+            color: ${styles.secondaryBgColor};
+            font-size: 110%;
+            margin-right: 0.5rem;
+        }
     }
 
     & h3 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         padding: 0.5rem 0;
-        border-bottom: 5px solid ${styles.mainBgColor};
         max-width: 50%;
+        line-height: 2rem;
+        &::before {
+            content: "###";
+            color: ${styles.secondaryBgColor};
+            font-size: 110%;
+            margin-right: 0.5rem;
+        }
     }
 
     & h4 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     & blockquote {

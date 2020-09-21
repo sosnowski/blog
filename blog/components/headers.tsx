@@ -14,23 +14,18 @@ const PrimaryHeaderContainer = styled('h1')<HeaderProps>`
     font-size: ${props => props.size || '3rem'};
     color: ${props => props.color || '#000'};
     font-weight: normal;
-    font-family: 'Alfa Slab One', sans-serif;
+    font-family: 'Cascadia Code', sans-serif;
     letter-spacing: 2px;
     display: inline-block;
     margin: ${props => props.margin || '3rem 0'};
     padding: 0;
     position: relative;
 
-    &::after {
-        content: " ";
-        display: ${props => props.bar ? 'block' : 'none'};
-        height: 25px;
-        position: absolute;
-        bottom: -3px;
-        left: 5px;
-        background-color: ${props => props.barColor || '#ffc832'};
-        z-index: 10;
-        width: 100%;
+    &::before {
+        content: "#";
+        color: ${props => props.barColor || '#ffc832'};
+        margin-right: 0.5rem;
+        font-size: 110%;
     }
 
     & > span {
@@ -54,6 +49,12 @@ export const PrimaryHeader: StyledFunctionComponent<HeaderProps> = (props) => {
         <PrimaryHeaderContainer bar {...props}><span>{props.children}</span></PrimaryHeaderContainer>
     );
 };
+
+export const TOCHeader: StyledFunctionComponent = ({ children, className }) => {
+    return (
+        <PrimaryHeaderContainer bar color="#000" size="1.8rem" margin="1rem 0" className={className}><span>{children}</span></PrimaryHeaderContainer>
+    )
+}
 
 export const GreenSectionHeader: StyledFunctionComponent = ({ children, className }) => {
     return (

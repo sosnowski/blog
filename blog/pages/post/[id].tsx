@@ -1,23 +1,23 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import { PrimaryHeader } from '../../components/headers';
-import { getPostsMetdata, PostMetadata, getAllPostData } from "../../lib/posts";
-import { Content, Abstract, Meta, DateInfo, Tag } from "../../components/content";
-import { Breadcrumb } from "../../components/breadcrumb";
-import { ContentWrapper } from "../../components/content-wrapper";
+import { getPostsMetdata, PostMetadata, getAllPostData, TOCSimple } from "../../lib/posts";
+import { Content, Abstract, Meta, DateInfo, Tag, Article } from "../../components/content";
 import { DateTime } from "luxon";
 import Head from "next/head";
-
+import { TOC } from "../../components/toc";
+import { Fragment } from "react";
 
 interface Props {
     post: {
         content: string
+        toc: TOCSimple[]
     } & PostMetadata;
 }
 
 export default ({ post }: Props) => {
     const created = DateTime.fromISO(post.created);
     return (
-        <ContentWrapper>
+        <Fragment>
             <Head>
                 <title>{post.title} - Sosnowski.dev</title>
                 <meta name="description" content={post.abstract} />
@@ -25,12 +25,7 @@ export default ({ post }: Props) => {
                 <meta property="og:description" content={post.abstract} />
                 <meta property="og:url" content={`https://sosnowski.dev/post/${post.id}`} />
             </Head>
-            <Breadcrumb steps={[
-                { label: 'Home' },
-                { label: 'Blog', href: '/', as: '/' },
-                { label: post.title, href: `/post/[id]`, as: `/post/${post.id}` }
-            ]}/>
-            <article>
+            <Article>
                 <PrimaryHeader>{post.title}</PrimaryHeader>
                 <Meta>
                     {
@@ -38,12 +33,13 @@ export default ({ post }: Props) => {
                             return (<Tag key={tag}><strong>#</strong>{tag}</Tag>)
                         })
                     }
-                <DateInfo>{created.toLocaleString(DateTime.DATE_FULL)}</DateInfo>
+                <DateInfo>{created.toFormat('dd LLL yyyy')}</DateInfo>
                 </Meta>
                 <Abstract>{post.abstract}</Abstract>
+                <TOC items={post.toc}/>
                 <Content content={post.content}></Content>
-            </article>
-        </ContentWrapper>
+            </Article>
+        </Fragment>
     );
 }
 
@@ -54,7 +50,8 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
         props: {
             post: {
                 ...postData.meta,
-                content: postData.content
+                content: postData.content,
+                toc: postData.toc
             }
         }
     };

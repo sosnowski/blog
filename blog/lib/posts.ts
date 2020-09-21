@@ -40,8 +40,21 @@ export interface PostMetadata {
 
 export interface PostData {
     meta: PostMetadata,
-    content: string
+    content: string,
+    toc: TOCSimple[]
 }
+
+export interface TOCRecord {
+    href: string;
+    label: string;
+    level: number;
+    parent?: TOCRecord;
+    children: TOCRecord[];
+}
+
+export type TOCSimple = Pick<TOCRecord, 'href' | 'label'> & {
+    children: TOCSimple[];
+};
 
 // const parseMeta = (postId: string, meta: { [key: string]: any }): PostMetadata => {
 //     return {
@@ -83,7 +96,6 @@ export const getPostsMetdata = async (): Promise<PostMetadata[]> => {
             .filter(entry => entry.isFile())
             .map((entry) => {
                 console.log(`Found file in posts: ${entry.name}`);
-                console.log(entry);
                 return getPostMetadata(entry.name);
             })
     );
@@ -130,17 +142,91 @@ const htmlParser = () => (tree) => {
 
         (codeEl.properties.className as string[]).push('hljs');
     });
+
+    const headersElements = findNodes(nodes, node => {
+        return ['h1', 'h2', 'h3', 'h4', 'h5'].includes(node.tagName as string);
+    });
+    headersElements.forEach((header: NodeElement) => {
+        const textNode = findNodes((header.children as Node[] || []), (node) => node.type === 'text')[0];
+        const text: string = textNode.value as string || '-empty-';
+        const id = text.toLowerCase().replace(/\W/g, '-');
+        header.properties.id = id;
+    });
 };
+
+const getTOC = (nodes: Node[], currentTOC: TOCRecord) => {
+    nodes.forEach((node) => {
+        const tagName: string = node.tagName as string;
+        let tagLevel: number;
+        switch (tagName) {
+            case 'h1':
+                tagLevel = 1;
+                break;
+            case 'h2':
+                tagLevel = 2;
+                break;
+            case 'h3':
+                tagLevel = 3;
+                break;
+            case 'h4':
+                tagLevel = 4;
+                break;
+        }
+        if (tagLevel) {
+            const textNode = findNodes(node.children as Node[], (node) => node.type === 'text')[0];
+            const newTOC: TOCRecord = {
+                href: (node as NodeElement).properties.id as string,
+                label: textNode ? textNode.value as string : '-no-label-',
+                level: tagLevel,
+                children: []
+            };
+
+            while (tagLevel <= currentTOC.level && currentTOC.parent) {
+                currentTOC = currentTOC.parent;
+            }
+            newTOC.parent = currentTOC;
+            currentTOC.children.push(newTOC);
+            currentTOC = newTOC;
+        } else if (node.children) {
+            getTOC((node.children as NodeElement[]), currentTOC);
+        }
+    });
+}
+
+const getTOCNodes = (results: TOCRecord[]) => () => (tree) => {
+    const nodes: Node[] = tree.children || [];
+    const topTOC = {
+        href: '/',
+        label: 'Root',
+        level: 0,
+        children: []
+    };
+    getTOC(nodes, topTOC);
+
+    topTOC.children.forEach(toc => results.push(toc));
+}
+
+const simplifyTOC = (records: TOCRecord[]): TOCSimple[] => {
+    return records.map((record): TOCSimple => {
+        return {
+            href: record.href,
+            label: record.label,
+            children: simplifyTOC(record.children)
+        };
+    });
+}
 
 export const getAllPostData = async (postId: string): Promise<PostData> => {
     const fileContent = await readFileAsync(join(postsPath, `${postId}.md`), {
         encoding: 'utf8'
     });
     const postMeta = matter(fileContent);
+    const TOCRecords = [];
     const postHtml = await unified()
         .use(markdown)
         .use(remark2rehype)
         .use(htmlParser)
+        .use(getTOCNodes(TOCRecords))
         .use(html, { allowDangerousHtml: true })
         .process(postMeta.content);
 
@@ -153,6 +239,7 @@ export const getAllPostData = async (postId: string): Promise<PostData> => {
             updated: postMeta.data.updated,
             id: postId
         },
+        toc: simplifyTOC(TOCRecords),
         content: postHtml.toString()
     };
 }

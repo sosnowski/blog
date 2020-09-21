@@ -14,7 +14,11 @@ const HeaderContainer = styled.header`
         letter-spacing: 2px;
         color: #000;
         flex: 1;
-        font-family: 'Alfa Slab One', sans-serif;
+
+        > a {
+            color: #000;
+            text-decoration: none;
+        }
     }
 
     > * {
@@ -43,7 +47,7 @@ const LinksContainer = styled.section`
 export const TopHeader: StyledFunctionComponent = ({ className, children }) => {
     return (
         <HeaderContainer>
-            <h1>Sosnowski.dev</h1>
+            <h1><Link href="/"><a>|&gt; Sosnowski.dev</a></Link></h1>
         </HeaderContainer>
     );
 };

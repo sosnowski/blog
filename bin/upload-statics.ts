@@ -9,7 +9,7 @@ const bucketName = 'sosnowski-blog-files';
 const staticFolder = join(__dirname, '..', 'blog', 'out');
 
 const CACHE_DEFAULT = 60 * 60 * 24;
-const CACHE_ASSETS = 60 * 60 * 24 * 3;
+const CACHE_ASSETS = 60 * 60 * 24 * 7;
 
 const getAllFiles = (path: string): string[] => {
     return readdirSync(path, {
