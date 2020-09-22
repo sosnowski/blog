@@ -87,6 +87,7 @@ export const Footer: StyledFunctionComponent = ({ className, children }) => {
                     <a href="https://twitter.com/sosnowsd" target="_blank"><img src="/assets/twitter.svg" alt="My Twitter"/></a>
                     <a href="https://www.linkedin.com/in/damian-sosnowski-6798aa28/" target="_blank"><img src="/assets/linkedin.png" alt="My LinkedIn"/></a>
                     <a href="https://dev.to/sosnowski" target="_blank"><img src="/assets/dev-badge.svg" alt="My Dev.to"/></a>
+                    <a href="https://sosnowski.dev/rss.xml" target="_blank"><img src="/assets/rss.png" alt="RSS Feed"/></a>
                 </Links>
             </Content>
         </FooterContainer>
