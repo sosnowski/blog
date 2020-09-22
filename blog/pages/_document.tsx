@@ -9,6 +9,7 @@ class MyDocument extends Document {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
             <meta property="og:site_name" content="Sosnowski.dev - Personal Blog"></meta>
+            <link rel="alternate" type="application/rss+xml" href="https://sosnowski.dev/rss.xml" title="Sosnowski.dev - Personal Blog"></link>
         </Head>
         <Global styles={css`
             @font-face {
