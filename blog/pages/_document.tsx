@@ -9,6 +9,8 @@ class MyDocument extends Document {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
             <meta property="og:site_name" content="Sosnowski.dev - Personal Blog"></meta>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178748157-1"></script>
+            <script src="/gtag.js"></script>
             <link rel="alternate" type="application/rss+xml" href="https://sosnowski.dev/rss.xml" title="Sosnowski.dev - Personal Blog"></link>
         </Head>
         <Global styles={css`
