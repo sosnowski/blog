@@ -20,7 +20,7 @@ class MyDocument extends Document {
             }
             body {
                 background-color: #fff;
-                color: #000;
+                color: #212121;
                 font-family: 'Cascadia Code', sans-serif;
                 padding: 0;
                 margin: 0;

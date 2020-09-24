@@ -66,9 +66,10 @@ const ContentContainer = styled.section`
 
     & h2 {
         font-size: 2.1rem;
+        color: #000;
         padding: 0.5rem 0;
         width: 90%;
-        margin: 2.5rem 0 2rem 0;
+        margin: 3rem 0 2rem 0;
         line-height: 2rem;
 
         &::before {
@@ -81,6 +82,7 @@ const ContentContainer = styled.section`
 
     & h3 {
         font-size: 1.5rem;
+        color: #000;
         padding: 0.5rem 0;
         max-width: 50%;
         line-height: 2rem;
@@ -94,6 +96,7 @@ const ContentContainer = styled.section`
 
     & h4 {
         font-size: 1.2rem;
+        color: #000;
     }
 
     & blockquote {

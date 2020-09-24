@@ -15,10 +15,10 @@ const Container = styled('article')<StyleProps>`
 
 const Abstract = styled('p')<StyleProps>`
     font-size: ${props => props.main ? '1rem' : '1.rem'};
-    color: ${props => props.main ? '#000' : '#fff'};
+    color: ${props => props.main ? '#212121' : '#fff'};
     & a {
         text-decoration: none;
-        color: ${props => props.main ? '#000' : '#fff'};
+        color: ${props => props.main ? '#212121' : '#fff'};
         :hover {
             text-decoration: underline;
         }
