@@ -27,6 +27,7 @@ export default ({ articles }: HomeProps) => {
             <meta property="og:title" content="Blog - Sosnowski.dev" />
             <meta property="og:description" content="Hi! I'm Damian. I'm an Engineering Manager in OLX, certified AWS Architect Associate and a technology geek. Welcome to my blog!" />
             <meta property="og:url" content="https://sosnowski.dev" />
+            <link rel="canonical" href="https://sosnowski.dev" />
         </Head>
         <ContentWrapper>
             <ArticleTile main post={articles[0]}/>
