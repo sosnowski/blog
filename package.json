@@ -1,4 +1,4 @@
 {
     "private": true,
-    "workspaces": ["blog", "infra", "bin"]
+    "workspaces": ["blog", "bin"]
 }
