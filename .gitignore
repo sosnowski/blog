@@ -44,3 +44,5 @@ operations/variable-scripts/variable.template.json
 operations/variable-scripts/variable.json
 # Local Netlify folder
 .netlify
+.next
+/public/rss.xml

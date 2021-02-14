@@ -10,8 +10,8 @@ const readDirAsync = promisify(readdir);
 const readFileAsync = promisify(readFile);
 const writeFileAsync = promisify(writeFile);
 
-const postsPath = join(__dirname, '..', 'blog', 'posts');
-const rssPath = join(__dirname, '..', 'blog', 'public', 'rss.xml');
+const postsPath = join(__dirname, '..', 'posts');
+const rssPath = join(__dirname, '..', 'public', 'rss.xml');
 
 export interface PostMetadata {
     title: string;

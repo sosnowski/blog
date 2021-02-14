@@ -1,4 +1,48 @@
 {
-    "private": true,
-    "workspaces": ["blog", "bin"]
+  "name": "blog",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:all": "yarn create-rss && yarn build",
+    "start": "next start",
+    "build-export": "next build && next export",
+    "create-rss": "ts-node -s ./bin/create-rss.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3-node": "^0.1.0-preview.2",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
+    "@types/highlight.js": "^9.12.4",
+    "axios": "^0.19.2",
+    "gray-matter": "^4.0.2",
+    "highlight.js": "^10.1.0",
+    "luxon": "^1.24.1",
+    "next": "10",
+    "react": "17",
+    "react-dom": "17",
+    "rehype-stringify": "^8.0.0",
+    "remark": "^12.0.0",
+    "remark-frontmatter": "^2.0.0",
+    "remark-html": "^11.0.2",
+    "remark-parse": "^8.0.2",
+    "remark-rehype": "^7.0.0",
+    "remark-stringify": "^8.0.0",
+    "unified": "^9.0.0"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-s3-node": "^0.1.0-preview.2",
+    "@types/luxon": "^1.24.0",
+    "@types/mime-types": "^2.1.0",
+    "@types/node": "^14.14.27",
+    "@types/react": "^16.9.34",
+    "@types/unist": "^2.0.3",
+    "date-fns": "^2.16.1",
+    "mime-types": "^2.1.27",
+    "ts-node": "^9.1.1",
+    "typescript": "^3.8.3",
+    "unified": "^9.0.0",
+    "xmlbuilder2": "^2.4.0"
+  }
 }

@@ -4,7 +4,7 @@ on:
         branches: [ master ]
 jobs:
     parse-posts:
-        name: Build and deploy
+        name: Parse posts
         runs-on: ubuntu-latest
         steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
