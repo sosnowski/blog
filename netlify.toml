@@ -1,8 +1,9 @@
 # example netlify.toml
 [build]
-  command = "yarn workspace blog build"
+  base = "blog/"
+  command = "yarn build"
   functions = "functions"
-  publish = "./blog/.next"
+  publish = "out"
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.

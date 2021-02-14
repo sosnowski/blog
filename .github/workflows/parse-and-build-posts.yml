@@ -1,4 +1,4 @@
-name: Build and deploy
+name: Rebuild static content
 on:
     push:
         branches: [ master ]
