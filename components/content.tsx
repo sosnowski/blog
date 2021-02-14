@@ -16,6 +16,7 @@ export const Article = styled.article`
 
 export const Abstract = styled.section`
     font-size: 1.2rem;
+    line-height: 1.4rem;
     font-weight: bold;
     margin: 0;
     padding: ${styles.contentPadding};

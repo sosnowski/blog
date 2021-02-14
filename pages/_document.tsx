@@ -15,13 +15,14 @@ class MyDocument extends Document {
         </Head>
         <Global styles={css`
             @font-face {
-                font-family: 'Cascadia Code';
-                src: local('Cascadia Code'), local('OpenSans-Regular'), url('/assets/fonts/cascadia/CascadiaCode.ttf');
+                font-family: 'Inconsolata';
+                src: local('Inconsolata'), url('/assets/fonts/inconsolata.ttf'), local('OpenSans-Regular');
+                font-display: swap;
             }
             body {
                 background-color: #fff;
                 color: #212121;
-                font-family: 'Cascadia Code', sans-serif;
+                font-family: 'Inconsolata', sans-serif;
                 padding: 0;
                 margin: 0;
             }

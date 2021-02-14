@@ -14,7 +14,8 @@ const Container = styled('article')<StyleProps>`
 `;
 
 const Abstract = styled('p')<StyleProps>`
-    font-size: ${props => props.main ? '1rem' : '1.rem'};
+    font-size: ${props => props.main ? '1.2rem' : '1rem'};
+    line-height: ${props => props.main ? '1.4rem' : '1.1rem'};
     color: ${props => props.main ? '#212121' : '#fff'};
     & a {
         text-decoration: none;

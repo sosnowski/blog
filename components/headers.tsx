@@ -11,11 +11,11 @@ interface HeaderProps {
 }
 
 const PrimaryHeaderContainer = styled('h1')<HeaderProps>`
-    font-size: ${props => props.size || '3rem'};
+    font-size: ${props => props.size || '2.6rem'};
     color: ${props => props.color || '#000'};
     font-weight: normal;
-    font-family: 'Cascadia Code', sans-serif;
-    letter-spacing: 2px;
+    font-family: 'Inconsolata', sans-serif;
+    letter-spacing: 1px;
     display: inline-block;
     margin: ${props => props.margin || '3rem 0'};
     padding: 0;
