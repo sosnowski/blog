@@ -57,7 +57,6 @@ const ContentContainer = styled.section`
     padding: ${styles.contentPadding};
     font-size: 1.1rem;
     line-height: 1.5rem;
-    font-weight: light;
     margin: 0;
 
     & a {
@@ -118,7 +117,8 @@ const ContentContainer = styled.section`
     }
 
     & img {
-        width: 90%;
+        max-width: 90%;
+        max-height: 30rem;
         margin: 1rem auto;
         display: block;
     }

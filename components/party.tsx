@@ -12,6 +12,9 @@ const Clicker = styled.span`
 declare var party: any;
 
 const appendPartyScript = () => {
+    if (typeof party !== 'undefined') {
+        return;
+    }
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.async = true;

@@ -93,7 +93,7 @@ export const getPostsMetdata = async (): Promise<PostMetadata[]> => {
 
     return Promise.all(
         dirContent
-            .filter(entry => entry.isFile())
+            .filter(entry => entry.isFile() && extname(entry.name) === '.md')
             .map((entry) => {
                 console.log(`Found file in posts: ${entry.name}`);
                 return getPostMetadata(entry.name);
