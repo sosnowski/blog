@@ -11,6 +11,10 @@ export default ({ Component, pageProps }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
                 <meta property="og:site_name" content="Sosnowski.dev - Personal Blog"></meta>
+                <meta property="og:site_name" content="Sosnowski.dev - Personal Blog"></meta>
+                <meta name="twitter:title" content="Sosnowski.dev - Personal Blog" />
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:site" content="@sosnowsd" />
                 <meta name="monetization" content="$ilp.uphold.com/fYBP4y6iaHEy"></meta>
                 <link rel="alternate" type="application/rss+xml" href="https://sosnowski.dev/rss.xml" title="Sosnowski.dev - Personal Blog"></link>
             </Head>
