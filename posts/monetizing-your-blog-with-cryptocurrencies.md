@@ -52,7 +52,7 @@ Above platforms are build around cryptocurrencies but follow different patterns 
 
 ## BAT Project
 
-**BAT** comes from **[Basic Attention Token**.](https://basicattentiontoken.org/) It's a cryptocurrency that wants to revolutionise how we think about the internet marketing and remove intermediaries between content creators and content consumers.
+**BAT** comes from **[Basic Attention Token](https://basicattentiontoken.org/)**. It's a cryptocurrency that wants to revolutionise how we think about the internet marketing and remove intermediaries between content creators and content consumers.
 
 Right now BAT only works with the **[Brave browser](https://brave.com/),** users can send and receive BAT tokens via its [Brave Rewards program](https://brave.com/brave-rewards/). There are plans to extend BAT support to other browsers (for example via browser add ons) but as for now this has not yet been achieved.
 
